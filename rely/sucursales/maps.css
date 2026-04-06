@@ -1,0 +1,477 @@
+/* ==========================================================================
+   1. Reset y base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #f5f5f5;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  /* Fuentes personalizadas se definen más abajo */
+}
+
+/* ==========================================================================
+   2. Custom Properties (variables CSS)
+   ========================================================================== */
+
+@property --primary-500 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0d171a;
+}
+@property --primary-400 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #27454e;
+}
+@property --primary-300 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #417483;
+}
+@property --primary-200 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #629eb1;
+}
+@property --primary-100 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #96bfcb;
+}
+@property --primary-50 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #cbdfe5;
+}
+@property --primary-5 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #ffffff;
+}
+
+@property --secondary-500 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #e60012;
+}
+
+@property --title {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 60px;
+}
+@property --h2 {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 50px;
+}
+@property --subtitle {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 22px;
+}
+@property --body1 {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 18px;
+}
+
+/* ==========================================================================
+   3. Fuentes personalizadas
+   ========================================================================== */
+
+@font-face {
+  font-family: "Raleway-Thin";
+  src: url("../fonts/Raleway-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway-SemiBold";
+  src: url("../fonts/Raleway-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway-Bold";
+  src: url("../fonts/Raleway-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+p,
+li {
+  font-family: "Raleway-Thin", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Raleway-Bold", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.numeros li,
+.btn {
+  font-family: "Raleway-SemiBold", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   4. Layout principal
+   ========================================================================== */
+
+.app-container {
+  max-width: 2000px;
+  margin: 0 auto 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.search-header {
+  padding: 15px 20px 20px 20px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.search-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  min-height: 85vh;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+#aheto-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   5. Componentes - Sidebar y lista de sucursales
+   ========================================================================== */
+
+.branches-list {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #531ef3 #35363a;
+  -webkit-overflow-scrolling: touch;
+}
+
+.branch-item {
+  padding: 24px 20px;
+  background: var(--primary-5);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.branch-item:hover {
+  padding: 24px 20px;
+  background: var(--primary-100);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.branch-item:first-child {
+  margin-top: 0;
+}
+
+.branch-item + .branch-item {
+  margin-top: 4px;
+}
+
+
+
+.branch-item:hover h3,
+.branch-item:hover p {
+  color: white;
+}
+
+.branch-item h3 {
+  margin: 0 0 5px;
+  color: #464646;
+}
+
+.branch-item p {
+  margin: 0;
+  color: #494949;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   6. Detalle de sucursal
+   ========================================================================== */
+
+.branch-detail {
+  flex: 1;
+  padding: 20px;
+  background: white;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #531ef3 #35363a;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.branch-detail[style*="display: block"],
+.branch-detail.show {
+  /* si usas clase .show en vez de inline style */
+  opacity: 1;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.back-button:hover {
+  color: white;
+  transform: translateX(-3px);
+}
+
+.branch-title {
+  color: #303030;
+  font-size: 24px;
+  margin: 0 0 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.full-width-section {
+  width: 100%;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 4px;
+}
+
+.last-section {
+  margin-top: auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.section-icon {
+  width: 24px;
+  height: 24px;
+  fill: #2c7be5;
+}
+
+.section-header h3 {
+  color: #2d3748;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.section-content {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 15px;
+  padding-left: 36px;
+}
+
+/* Horarios específicos */
+#detailSchedule1,
+#detailSchedule2 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#schedule2-container {
+  display: none;
+}
+
+#schedule2-container:has(#detailSchedule2:not(:empty)) {
+  display: block;
+}
+
+/* ==========================================================================
+   7. Mobile Toggle / Handle
+   ========================================================================== */
+
+#mobileToggle,
+.Mobile-Toggle {
+  display: none;
+  background: #531ef3;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+#mobileToggle:hover,
+.Mobile-Toggle:hover {
+  background: #3a0bb3;
+}
+
+.sidebar-handle {
+  width: 100%;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+  background: var(--primary-5);
+  position: relative;
+  z-index: 900;
+}
+
+.sidebar-handle::after {
+  content: "";
+  width: 50px;
+  height: 5px;
+  background: rgba(78, 78, 78, 0.5);
+  border-radius: 3px;
+}
+
+.sidebar-handle:hover::after {
+  background: #787878;
+}
+
+/* ==========================================================================
+   8. Media Queries
+   ========================================================================== */
+
+/* Desktop ──────────────────────────────────────── */
+@media (min-width: 769px) {
+  .sidebar {
+    position: absolute;
+    inset: 1rem auto 1rem 1rem;
+    width: 340px;
+    max-width: calc(100% - 2rem);
+    padding: 23px 5px;
+    background: var(--primary-5);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.12);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition:
+      height 0.3s ease-out,
+      transform 0.3s ease-out;
+    transform: translateZ(0);
+    will-change: height, transform;
+  }
+
+  #mobileToggle,
+  .Mobile-Toggle {
+    display: none !important;
+  }
+}
+
+/* Mobile / Tablet ───────────────────────────────── */
+@media (max-width: 768px) {
+  .search-content {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .sidebar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 80px;
+    max-height: 80vh;
+    background: var(--primary-5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: height 0.5s ease-out;
+    z-index: 800;
+  }
+
+  .sidebar.visible {
+    height: 80vh; /* o el valor que uses para expandir */
+    transform: translateY(0);
+  }
+
+  .branches-list {
+    height: calc(100% - 40px);
+    display: block; /* se muestra cuando sidebar está visible */
+  }
+
+  .map-container {
+    height: 100vh;
+    flex:auto;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 999;
+    pointer-events: none; /* solo fondo, no captura clics */
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .branch-detail {
+    padding: 15px;
+  }
+
+  .section-header h3 {
+    font-size: 16px;
+  }
+
+  .section-content {
+    font-size: 14px;
+  }
+}

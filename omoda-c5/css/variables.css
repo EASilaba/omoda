@@ -1,0 +1,183 @@
+/* ==========================================================================
+   VARIABLES CSS - Tokens de diseño (compartidos entre páginas)
+   ========================================================================== */
+
+:root {
+  /* Colores semánticos principales */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(222 84% 5%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222 84% 5%);
+  --card-secondary: hsl(0 0% 100%);
+  --card-secondary-foreground: hsl(222, 43%, 60%);
+
+  --primary: hsl(209 40% 96%);
+  --primary-foreground: hsl(210 40% 98%);
+  --secondary: hsl(210 40% 96%);
+  --secondary-foreground: hsl(44 4% 95%);
+  --muted: hsl(215 16% 47%);
+  --muted-foreground: hsl(215 16% 47%);
+  --border: hsl(214 32% 91%);
+  --accent: hsl(210 40% 96%);
+
+  /* Colores fijos / de marca */
+  --black: #181818;
+  --Black: #181818;
+  --dark-gray: #1c2027;
+  --gray: #9ca3af;
+  --light-gray: #f1f5f9;
+  --white: #ffffff;
+  --White: #ffffff;
+
+  /* Colores de utilidad (botones, tablas, etc.) */
+  --blue-600: #2563eb;
+  --blue-50: #eff6ff;
+  --green-600: #16a34a;
+  --green-50: #f0fdf4;
+  --purple-600: #7e22ce;
+  --purple-50: #faf5ff;
+
+  /* Escala grises (tablas, fondos) */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-white: #ffffff;
+
+  /* Alias usados en componentes */
+  --color-blue-600: var(--blue-600);
+  --color-blue-50: var(--blue-50);
+  --color-green-50: var(--green-50);
+  --color-purple-50: var(--purple-50);
+  --color-primary-foreground: var(--primary-foreground);
+  --carbon-black: var(--black);
+  --color-layer: #ffffff;
+  --color-layer-border: #d1d5db;
+  --color-layer-foreground: #111827;
+  --color-layer-hover: #f3f4f6;
+  --social-border-color: rgba(255, 255, 255, 0.3);
+  --social-text-color: rgba(255, 255, 255, 0.7);
+  --social-hover-color: #3b82f6;
+  --social-hover-bg: rgba(59, 130, 246, 0.1);
+
+  /* Bordes, sombras y espaciados */
+  --radius: 0.5rem;
+  --border-radius: 0.75rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.5rem;
+
+  /* Tipografía - tamaños */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3rem;
+  --text-5xl: 3.75rem;
+  --text-6xl: 4rem;
+  --text-7xl: 8rem;
+
+  /* Tipografía - pesos */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Tipografía - familias (Montserrat para títulos, fallback para cuerpo) */
+  --font-heading: "Montserrat", "League Spartan", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "League Spartan", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-primary: var(--font-body);
+  /* Display / bloques de sección: un solo cambio aquí aplica a títulos de sección */
+  --font-display: var(--font-heading);
+
+  /* Bloques de sección (kicker + título + bajada) — tamaños y color */
+  --section-kicker-size: var(--text-sm);
+  --section-heading-size: var(--text-3xl);
+  --section-heading-size-md: var(--text-4xl);
+  --section-lede-size: var(--text-md);
+  --section-heading-weight: var(--font-bold);
+  --section-lede-max-width: 42rem;
+  --section-kicker-color: #e63939;
+
+  /* --------------------------------------------------------------------------
+     Temas reutilizables (claro / oscuro)
+     - Claro: referencia visual stats + bloques con fondo blanco (personalización, etc.)
+     - Oscuro: secciones Seguridad avanzada / Sistemas integrados
+     Usa estas variables en componentes; no hace falta duplicar hex en cada regla.
+     -------------------------------------------------------------------------- */
+
+  /* Acentos de marca compartidos */
+  --accent-cyan: #00d4ff;
+  --accent-cyan-rgb: 0, 212, 255;
+  --accent-mint: #00ffaa;
+  --accent-mint-rgb: 0, 255, 170;
+  --brand-red: #e63939;
+  --brand-red-rgb: 230, 57, 57;
+  --brand-red-light: #ff6b6b;
+
+  /* Tema claro (stats, galería, personalización de color, etc.) */
+  --theme-light-bg: #ffffff;
+  --theme-dark-text-muted: #0a0a0a;
+  --theme-light-text-muted-hover: #0a0a0a;
+  --theme-light-heading: #0a0a0a;
+  --theme-light-body: hsl(195, 40%, 96%);
+  --theme-light-body-soft: rgba(21, 21, 21, 0.65);
+  --theme-light-muted: rgba(21, 21, 21, 0.55);
+  --theme-light-subtle: rgba(21, 21, 21, 0.45);
+  --theme-light-border: hsla(195, 34%, 56%, 0.747);
+  --theme-light-card-bg: rgb(255, 255, 255);
+  --theme-light-number: rgb(34, 167, 224);
+  
+  --theme-light-border-soft: rgba(21, 21, 21, 0.12);
+  --theme-light-border-medium: rgba(21, 21, 21, 0.25);
+  --theme-light-stat-card-bg: rgba(255, 255, 255, 0.02);
+  --theme-light-gradient-accent: linear-gradient(
+    90deg,
+    var(--accent-cyan),
+    var(--accent-mint)
+  );
+  --theme-light-shadow-image: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+  /* Tema oscuro (seguridad) */
+  --theme-dark-bg: #0a0a0a;
+  --theme-dark-bg-elevated: #111111;
+  --theme-dark-text: #f8f8f8;
+  --theme-dark-text-muted: rgba(255, 255, 255, 0.6);
+  --theme-dark-text-muted-hover: rgba(255, 255, 255, 0.75);
+  --theme-dark-border: rgba(255, 255, 255, 0.1);
+  --theme-dark-card-bg: rgba(255, 255, 255, 0.04);
+  --theme-dark-card-hover-bg: rgba(255, 255, 255, 0.07);
+  --theme-dark-card-hover-border: rgba(var(--accent-cyan-rgb), 0.4);
+  --theme-dark-icon-bg: rgba(var(--accent-cyan-rgb), 0.15);
+  --theme-dark-icon-border: rgba(var(--accent-cyan-rgb), 0.2);
+  --theme-dark-icon-bg-strong: rgba(var(--accent-cyan-rgb), 0.2);
+  --theme-dark-icon-border-strong: rgba(var(--accent-cyan-rgb), 0.3);
+  --theme-dark-blur-bg: var(--accent-cyan);
+  --theme-dark-number: rgba(11, 106, 144, 0.671);
+  --theme-dark-number-hover: rgba(24, 34, 89, 0.851);
+  --theme-dark-gradient-card-top: rgba(var(--accent-cyan-rgb), 0.1);
+  --theme-dark-nav-hover-bg: rgba(var(--accent-cyan-rgb), 0.8);
+  --theme-dark-nav-hover-fg: #000000;
+  --theme-dark-dot-inactive: rgba(255, 255, 255, 0.25);
+  --theme-dark-dot-hover: rgba(255, 255, 255, 0.45);
+  --theme-dark-dot-active-glow: rgba(var(--accent-cyan-rgb), 0.15);
+
+  /* Tipografía — estadísticas (grid) */
+  --stat-label-size: var(--text-sm);
+  --stat-label-tracking: 0.125rem;
+  --stat-value-size: 3.5rem;
+  --stat-value-size-md: 4rem;
+  --stat-unit-size: 1.25rem;
+
+  /* Espaciado de sección (alineado con .section-padding donde aplica) */
+  --section-block-padding-y: 6rem;
+}

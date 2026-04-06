@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comparación de Modelos</title>
+
+    <style>
+        :root {
+            --radius: 0.5rem;
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --primary: 221.2 83.2% 53.3%;
+            /* azul principal */
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96.1%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96.1%;
+            --border: 214.3 31.8% 91.4%;
+        }
+
+        /* Colores base */
+        .bg-card {
+            background-color: hsl(var(--card));
+            color: hsl(var(--card-foreground));
+        }
+
+        .bg-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .bg-secondary {
+            background-color: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+        }
+
+        .bg-accent-light {
+            background-color: hsl(var(--accent) / 0.3);
+        }
+
+        .text-muted {
+            color: hsl(var(--muted-foreground));
+        }
+
+        .border-subtle {
+            border: 1px solid hsl(var(--border));
+        }
+
+        .border-subtle-50 {
+            border-color: hsl(var(--border) / 0.5);
+        }
+
+        /* Contenedores y espaciado */
+        .section-padding {
+            padding: 5rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 8rem 3rem;
+            }
+        }
+
+        .container-wide {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .container-wide {
+                padding: 0 3rem;
+            }
+        }
+
+        .text-center-block {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        /* Tarjetas de modelo */
+        .model-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .model-card:hover {
+            border-color: hsl(var(--primary) / 0.5);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .model-header {
+            position: relative;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .model-header h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .model-header h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .model-header p {
+            margin: 0.25rem 0 0;
+            opacity: 0.8;
+            font-size: 1.125rem;
+        }
+
+        .model-header::before,
+        .model-header::after {
+            content: '';
+            position: absolute;
+            border-radius: 9999px;
+            background: white;
+            opacity: 0.1;
+        }
+
+        .model-header::before {
+            width: 8rem;
+            height: 8rem;
+            right: -2rem;
+            bottom: -2rem;
+        }
+
+        .model-header::after {
+            width: 5rem;
+            height: 5rem;
+            right: -1rem;
+            bottom: -1rem;
+            opacity: 0.05;
+        }
+
+        .model-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-group {
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .feature-group:last-child {
+            border-bottom: none;
+        }
+
+        .feature-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+
+        .feature-label {
+            font-weight: 500;
+            color: hsl(var(--muted-foreground));
+            flex-shrink: 0;
+            min-width: 110px;
+        }
+
+        .feature-value {
+            text-align: right;
+            flex: 1;
+        }
+
+        .btn-primary {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            font-weight: 500;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--primary) / 0.9);
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin: 1rem 0 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        /* Grid de tarjetas */
+        .models-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .models-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        /* Icono (ajusta el color si quieres que coincida con el header) */
+        .feature-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: hsl(var(--primary));
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="bg-accent-light section-padding">
+        <div class="container-wide">
+            <div class="text-center-block mb-16">
+                <span class="text-primary font-medium tracking-wider text-sm uppercase">VERSIONES</span>
+                <h2 class="section-title">COMPARA MODELOS</h2>
+                <p class="section-subtitle">Encuentra la versión perfecta para ti. Cada modelo ofrece características
+                    únicas para diferentes necesidades.</p>
+            </div>
+
+            <div class="models-grid">
+
+                <!-- WorkTruck -->
+                <div class="model-card">
+                    <div class="model-header bg-secondary">
+                        <div class="relative z-10">
+                            <h3>WorkTruck</h3>
+                            <p>Desde $45,000</p>
+                        </div>
+                    </div>
+                    <div class="model-content">
+                        <div class="feature-group flex items-center gap-2">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 14 4-4" />
+                                <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+                            </svg>
+                            <h4 class="font-semibold">Performance & Equipamiento</h4>
+                        </div>
+                        <div>
+                            <div class="feature-row"><span class="feature-label">Motor:</span><span
+                                    class="feature-value">2.3 Turbo Diésel</span></div>
+                            <div class="feature-row"><span class="feature-label">Transmisión:</span><span
+                                    class="feature-value">Manual 6MT</span></div>
+                            <div class="feature-row"><span class="feature-label">Tracción:</span><span
+                                    class="feature-value">4x4</span></div>
+                            <div class="feature-row"><span class="feature-label">Capacidad de carga:</span><span
+                                    class="feature-value">Hasta 1,000 kg</span></div>
+                            <div class="feature-row"><span class="feature-label">Dimensiones caja:</span><span
+                                    class="feature-value">1530 × 1620 × 515 mm</span></div>
+                            <div class="feature-row"><span class="feature-label">Pantalla central:</span><span
+                                    class="feature-value">12.3"</span></div>
+                            <div class="feature-row"><span class="feature-label">Asientos:</span><span
+                                    class="feature-value">Tela</span></div>
+                            <div class="feature-row"><span class="feature-label">Cámara:</span><span
+                                    class="feature-value">Reversa</span></div>
+                            <div class="feature-row"><span class="feature-label">Seguridad:</span><span
+                                    class="feature-value">ABS + EBD + ESC + TCS</span></div>
+                            <div class="feature-row"><span class="feature-label">Airbags:</span><span
+                                    class="feature-value">Frontales</span></div>
+                        </div>
+                        <button class="btn-primary">Cotizar WorkTruck</button>
+                    </div>
+                </div>
+
+                <!-- Luxury -->
+                <div class="model-card">
+                    <div class="model-header bg-primary">
+                        <div class="relative z-10">
+                            <h3>Luxury</h3>
+                            <p>Desde $45,000</p>
+                        </div>
+                    </div>
+                    <div class="model-content">
+                        <div class="feature-group flex items-center gap-2">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 14 4-4" />
+                                <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+                            </svg>
+                            <h4 class="font-semibold">Performance & Equipamiento</h4>
+                        </div>
+                        <div>
+                            <div class="feature-row"><span class="feature-label">Motor:</span><span
+                                    class="feature-value">2.3 Turbo Diésel</span></div>
+                            <div class="feature-row"><span class="feature-label">Transmisión:</span><span
+                                    class="feature-value">Manual 6MT</span></div>
+                            <div class="feature-row"><span class="feature-label">Tracción:</span><span
+                                    class="feature-value">4x4</span></div>
+                            <div class="feature-row"><span class="feature-label">Pantalla central:</span><span
+                                    class="feature-value">Flotante 12.3"</span></div>
+                            <div class="feature-row"><span class="feature-label">Asientos:</span><span
+                                    class="feature-value">Tela tipo cuero perforada</span></div>
+                            <div class="feature-row"><span class="feature-label">Cámara:</span><span
+                                    class="feature-value">Panorámica 3D 360°</span></div>
+                            <div class="feature-row"><span class="feature-label">Conectividad:</span><span
+                                    class="feature-value">CarPlay & Android Auto inalámbrico</span></div>
+                            <div class="feature-row"><span class="feature-label">Airbags:</span><span
+                                    class="feature-value">Frontales, laterales y de cortina</span></div>
+                        </div>
+                        <button class="btn-primary">Cotizar Luxury</button>
+                    </div>
+                </div>
+
+                <!-- Limited -->
+                <div class="model-card">
+                    <div class="model-header bg-foreground">
+                        <div class="relative z-10">
+                            <h3>Limited</h3>
+                            <p>Desde $45,000</p>
+                        </div>
+                    </div>
+                    <div class="model-content">
+                        <div class="feature-group flex items-center gap-2">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m12 14 4-4" />
+                                <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+                            </svg>
+                            <h4 class="font-semibold">Performance & Equipamiento</h4>
+                        </div>
+                        <div>
+                            <div class="feature-row"><span class="feature-label">Motor:</span><span
+                                    class="feature-value">2.3 Turbo Diésel</span></div>
+                            <div class="feature-row"><span class="feature-label">Transmisión:</span><span
+                                    class="feature-value">Automática 8AT</span></div>
+                            <div class="feature-row"><span class="feature-label">Tracción:</span><span
+                                    class="feature-value">4x4 con modos avanzados</span></div>
+                            <div class="feature-row"><span class="feature-label">Modos de conducción:</span><span
+                                    class="feature-value">Eco, Sport, Nieve, Arena, Lodo, Roca, 4H, 4L, 2H, Modo
+                                    todoterreno experto</span></div>
+                            <div class="feature-row"><span class="feature-label">Pantalla central:</span><span
+                                    class="feature-value">Flotante 15.6"</span></div>
+                            <div class="feature-row"><span class="feature-label">Asientos:</span><span
+                                    class="feature-value">Tela tipo cuero perforada con ventilación</span></div>
+                            <div class="feature-row"><span class="feature-label">Cámara:</span><span
+                                    class="feature-value">Panorámica 3D 360°</span></div>
+                            <div class="feature-row"><span class="feature-label">Airbags:</span><span
+                                    class="feature-value">Frontales, laterales, cortina y rodilla</span></div>
+                            <div class="feature-row"><span class="feature-label">ADAS:</span><span
+                                    class="feature-value">Frenado autónomo, mantenimiento de carril, crucero adaptativo,
+                                    tráfico y luces inteligentes</span></div>
+                            <div class="feature-row"><span class="feature-label">Exterior:</span><span
+                                    class="feature-value">Faros LED automáticos, rines de aleación, barras de
+                                    techo</span></div>
+                        </div>
+                        <button class="btn-primary">Cotizar Limited</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
