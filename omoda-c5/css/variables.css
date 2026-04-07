@@ -70,6 +70,12 @@
   --spacing-small: 0.5rem;
   --spacing-medium: 1rem;
   --spacing-large: 1.5rem;
+  
+  /* Espaciado de Layout Consistente */
+  --section-padding-y: clamp(5rem, 10vh, 8rem);
+  --container-padding-x: clamp(1.5rem, 5vw, 4rem);
+  --header-margin-bottom: clamp(3rem, 6vh, 5rem);
+  --content-gap: clamp(2rem, 4vw, 4rem);
 
   /* Tipografía - tamaños */
   --text-xs: 0.75rem;
@@ -126,7 +132,7 @@
 
   /* Tema claro (stats, galería, personalización de color, etc.) */
   --theme-light-bg: #ffffff;
-  --theme-dark-text-muted: #0a0a0a;
+  --theme-light-text-muted: #0a0a0a;
   --theme-light-text-muted-hover: #0a0a0a;
   --theme-light-heading: #0a0a0a;
   --theme-light-body: hsl(195, 40%, 96%);
@@ -178,6 +184,23 @@
   --stat-value-size-md: 4rem;
   --stat-unit-size: 1.25rem;
 
-  /* Espaciado de sección (alineado con .section-padding donde aplica) */
-  --section-block-padding-y: 6rem;
+  /* --------------------------------------------------------------------------
+     Variables de Tema Dinámicas
+     -------------------------------------------------------------------------- */
+  --bg-primary: var(--theme-light-bg);
+  --bg-secondary: var(--theme-light-body);
+  --text-main: var(--theme-light-heading);
+  --text-soft: var(--theme-light-body-soft);
+  --border-subtle: var(--theme-light-border-soft);
+  --card-bg: var(--theme-light-card-bg);
+}
+
+/* Tema Oscuro (Clase .dark-mode) */
+body.dark-mode {
+  --bg-primary: #0f1219;
+  --bg-secondary: #0a0c10;
+  --text-main: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.6);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.05);
 }

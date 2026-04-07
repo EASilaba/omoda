@@ -206,12 +206,14 @@ function initSafetySlider() {
   var stepEl = section.querySelector('.safety-slider__step');
   var titleEl = section.querySelector('.safety-slider__title');
   var descEl = section.querySelector('.safety-slider__desc');
-  var prevBtn = section.querySelector('.safety-slider__prev');
-  var nextBtn = section.querySelector('.safety-slider__next');
+  var prevBtns = section.querySelectorAll('.safety-slider__prev');
+  var nextBtns = section.querySelectorAll('.safety-slider__next');
   var thumbsRoot = section.querySelector('.safety-slider__thumbs');
   var dotsRoot = section.querySelector('.safety-slider__dots');
+  var featuresRoot = section.querySelector('.safety-features-list');
+  var progressFill = section.querySelector('.progress-fill');
 
-  if (!mainImg || !stepEl || !titleEl || !descEl || !prevBtn || !nextBtn || !thumbsRoot || !dotsRoot) {
+  if (!mainImg || !stepEl || !titleEl || !descEl || prevBtns.length === 0 || nextBtns.length === 0 || !thumbsRoot || !dotsRoot) {
     return;
   }
 
@@ -219,6 +221,7 @@ function initSafetySlider() {
   var current = 0;
   var thumbEls = [];
   var dotEls = [];
+  var featureEls = [];
 
   function pad2(n) {
     return n < 10 ? '0' + n : String(n);
@@ -227,35 +230,49 @@ function initSafetySlider() {
   function renderChrome() {
     thumbsRoot.innerHTML = '';
     dotsRoot.innerHTML = '';
+    if (featuresRoot) featuresRoot.innerHTML = '';
     thumbEls = [];
     dotEls = [];
+    featureEls = [];
 
     slides.forEach(function (slide, i) {
+      // Thumbnails
       var thumb = document.createElement('button');
       thumb.type = 'button';
-      thumb.className = 'thumbnail thumbnail-inactive safety-slider__thumb';
+      thumb.className = 'thumbnail safety-slider__thumb';
       thumb.setAttribute('role', 'tab');
       thumb.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
       thumb.setAttribute('aria-label', slide.title);
       thumb.innerHTML =
         '<img src="' +
         slide.src +
-        '" alt="" loading="lazy" decoding="async">' +
-        '<div class="thumbnail-overlay"></div>' +
-        '<span class="thumbnail-label">' +
-        slide.title +
-        '</span>';
+        '" alt="" loading="lazy" decoding="async">';
       thumb.addEventListener('click', function () {
         goTo(i);
       });
       thumbsRoot.appendChild(thumb);
       thumbEls.push(thumb);
 
+      // Features List Item
+      if (featuresRoot) {
+        var feature = document.createElement('button');
+        feature.type = 'button';
+        feature.className = 'feature-item';
+        feature.innerHTML = 
+          '<span class="feature-number">' + pad2(i + 1) + '</span>' +
+          '<span class="feature-name">' + slide.title + '</span>' +
+          '<span class="feature-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></span>';
+        feature.addEventListener('click', function () {
+          goTo(i);
+        });
+        featuresRoot.appendChild(feature);
+        featureEls.push(feature);
+      }
+
+      // Dots (hidden but kept for compatibility)
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'dot dot-inactive safety-slider__dot';
-      dot.setAttribute('tabindex', '-1');
-      dot.setAttribute('aria-label', 'Ir al slide ' + (i + 1));
       dot.addEventListener('click', function () {
         goTo(i);
       });
@@ -266,23 +283,31 @@ function initSafetySlider() {
 
   function updateUI() {
     var slide = slides[current];
-    // Fade suave entre imágenes
     setMainImageWithFade(slide.src, slide.alt);
     stepEl.textContent = pad2(current + 1) + ' / ' + pad2(total);
     titleEl.textContent = slide.title;
     descEl.textContent = slide.description;
 
+    // Progress fill
+    if (progressFill) {
+      progressFill.style.width = ((current + 1) / total) * 100 + '%';
+    }
+
     thumbEls.forEach(function (el, i) {
       var active = i === current;
       el.classList.toggle('thumbnail-active', active);
-      el.classList.toggle('thumbnail-inactive', !active);
       el.setAttribute('aria-selected', active ? 'true' : 'false');
     });
 
+    if (featureEls.length > 0) {
+      featureEls.forEach(function (el, i) {
+        el.classList.toggle('active', i === current);
+      });
+    }
+
     dotEls.forEach(function (el, i) {
-      var active = i === current;
-      el.classList.toggle('dot-active', active);
-      el.classList.toggle('dot-inactive', !active);
+      el.classList.toggle('dot-active', i === current);
+      el.classList.toggle('dot-inactive', i !== current);
     });
   }
 
@@ -338,11 +363,16 @@ function initSafetySlider() {
     ensureActiveThumbVisible();
   }
 
-  prevBtn.addEventListener('click', function () {
-    goTo(current - 1);
+  prevBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      goTo(current - 1);
+    });
   });
-  nextBtn.addEventListener('click', function () {
-    goTo(current + 1);
+
+  nextBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      goTo(current + 1);
+    });
   });
 
   renderChrome();
@@ -353,6 +383,28 @@ function initSafetySlider() {
   window.addEventListener('resize', ensureActiveThumbVisible);
 }
 
+function initThemeToggle() {
+  var themeBtn = document.getElementById('theme-toggle');
+  if (!themeBtn) return;
+
+  // Cargar preferencia guardada
+  var currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+
+  themeBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    
+    // Guardar preferencia
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   initNavMobile();
   initSliderControls();
@@ -360,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initMediaCarousel();
   initSafetySlider();
   syncColorPicker();
+  initThemeToggle();
 });
 
 

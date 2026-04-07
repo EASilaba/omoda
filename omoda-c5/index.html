@@ -378,67 +378,93 @@
 
 <section class="safety-section" data-safety-slider>
   <div class="container">
-
-    <!-- Encabezado -->
-    <div class="section-header">
-      <div class="header-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
-          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-        </svg>
-      </div>
-      <h2 class="title">Sistemas de seguridad integrados</h2>
-      <p class="subtitle">
-        Incorpora un completo Sistema Avanzado de Asistencia a la Conducción (ADAS), 
-        desarrollado para acompañarte en cada trayecto.
-      </p>
-    </div>
-
-    <!-- Imagen principal -->
-    <div class="main-image-container">
-      <div class="image-wrapper safety">
-        <img src="./images/1adas.jpg"
-             alt=""
-             class="main-image safety-slider__main-img"
-             loading="lazy"
-             decoding="async">
-
-        <div class="image-overlay"></div>
-
-        <!-- Contenido sobre la imagen -->
-        <div class="image-content">
-          <span class="step-indicator safety-slider__step">01 / 04</span>
-          <h3 class="main-title safety-slider__title">Alerta de colisión frontal y trasera</h3>
-          <p class="main-description safety-slider__desc">
-            Te avisa ante posibles impactos para que puedas reaccionar a tiempo.
+    <div class="safety-grid">
+      
+      <!-- Columna Izquierda: Contenido y Lista -->
+      <div class="safety-content">
+        <div class="section-header">
+          <div class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            </svg>
+          </div>
+          <h2 class="title">Sistemas de seguridad integrados</h2>
+          <p class="subtitle">
+            Incorpora un completo Sistema Avanzado de Asistencia a la Conducción (ADAS), 
+            desarrollado para acompañarte en cada trayecto.
           </p>
+        </div>
+
+        <!-- Lista de características (rellenada por JS) -->
+        <div class="safety-features-list" role="tablist"></div>
+
+        <!-- Navegación inferior izquierda -->
+        <div class="safety-nav-footer">
+          <div class="progress-container">
+            <div class="progress-line">
+              <div class="progress-fill"></div>
+            </div>
+            <span class="step-indicator safety-slider__step">01 / 04</span>
+          </div>
+          
+          <div class="nav-buttons-group">
+            <button type="button" class="nav-button-sm safety-slider__prev" aria-label="Anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+            </button>
+            <button type="button" class="nav-button-sm safety-slider__next" aria-label="Siguiente">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Botones de navegación -->
-      <button type="button" class="nav-button nav-button-left safety-slider__prev" aria-label="Anterior">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m15 18-6-6 6-6"></path>
-        </svg>
-      </button>
-      <button type="button" class="nav-button nav-button-right safety-slider__next" aria-label="Siguiente">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m9 18 6-6-6-6"></path>
-        </svg>
-      </button>
+      <!-- Columna Derecha: Imagen y Miniaturas -->
+      <div class="safety-visual">
+        <div class="main-image-container">
+          <!-- Botones de navegación solo para móvil -->
+          <div class="mobile-nav-overlay">
+            <button type="button" class="nav-button-mobile safety-slider__prev" aria-label="Anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="nav-button-mobile safety-slider__next" aria-label="Siguiente">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          <div class="image-wrapper safety">
+            <img src="./images/1adas.jpg"
+                 alt=""
+                 class="main-image safety-slider__main-img"
+                 loading="lazy"
+                 decoding="async">
+
+            <div class="image-overlay"></div>
+
+            <!-- Contenido sobre la imagen -->
+            <div class="image-content">
+              <h3 class="main-title safety-slider__title">Alerta de colisión frontal y trasera</h3>
+              <p class="main-description safety-slider__desc">
+                Te avisa ante posibles impactos para que puedas reaccionar a tiempo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrusel de miniaturas (rellenado por JS) -->
+        <div class="thumbnails-container safety-slider__thumbs" role="tablist" aria-label="Funciones ADAS"></div>
+      </div>
+
     </div>
 
-    <!-- Carrusel de miniaturas (rellenado por JS) -->
-    <div class="thumbnails-container safety-slider__thumbs" role="tablist" aria-label="Funciones ADAS"></div>
-
-    <!-- Indicadores (dots) -->
-    <div class="dots-container safety-slider__dots" aria-hidden="true"></div>
+    <!-- Indicadores (dots) - Ocultos o integrados si es necesario, pero mantenemos el hook por si JS lo requiere -->
+    <div class="dots-container safety-slider__dots" aria-hidden="true" style="display: none;"></div>
 
   </div>
 </section>
-
-
-
-     
 
   <section class="color-customization-section">
   <input type="radio" name="custom-color" id="ccc-negro"  checked=""/>
@@ -547,6 +573,14 @@
        
 
     </main>
+
+    <!-- Botón flotante para cambio de tema -->
+    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambiar tema">
+      <!-- Icono Luna (para modo claro) -->
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <!-- Icono Sol (para modo oscuro) -->
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
     
 </body>
 
