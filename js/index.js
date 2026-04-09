@@ -340,47 +340,51 @@ function initSafetySlider() {
     };
     tmp.src = src;
   }
-
-  function ensureActiveThumbVisible() {
+function ensureActiveThumbVisible() {
     var activeThumb = thumbEls[current];
     if (!activeThumb) return;
     if (typeof activeThumb.scrollIntoView !== 'function') return;
 
-    // En móvil, centra la miniatura activa en el contenedor desplazable.
-    // Usamos un timeout mínimo para que el layout (escala/border) ya se haya aplicado.
     setTimeout(function () {
       try {
-        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        activeThumb.scrollIntoView({ 
+          behavior: 'smooth', 
+          inline: 'center', 
+          block: 'nearest' 
+        });
       } catch (e) {
         activeThumb.scrollIntoView();
       }
     }, 50);
-  }
+}
 
-  function goTo(index) {
+// ==================== MODIFICADO ====================
+
+function goTo(index) {
     current = (index % total + total) % total;
     updateUI();
+    
+    // Solo centramos la miniatura cuando cambiamos de slide manualmente
     ensureActiveThumbVisible();
-  }
+}
 
-  prevBtns.forEach(function (btn) {
+// Eventos de botones (esto se queda igual)
+prevBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      goTo(current - 1);
+        goTo(current - 1);
     });
-  });
+});
 
-  nextBtns.forEach(function (btn) {
+nextBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      goTo(current + 1);
+        goTo(current + 1);
     });
-  });
+});
 
-  renderChrome();
-  updateUI();
-  ensureActiveThumbVisible();
-
-  // Si el usuario rota o cambia el tamaño, re-centramos la miniatura activa.
-  window.addEventListener('resize', ensureActiveThumbVisible);
+// Inicialización
+renderChrome();
+updateUI();
+ensureActiveThumbVisible();
 }
 
 function initThemeToggle() {

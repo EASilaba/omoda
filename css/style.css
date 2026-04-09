@@ -337,11 +337,11 @@ p::selection, span::selection, a::selection{
 }
 
 .buttons {
-  align-self: center;
+  align-self: self-end;
   width: fit-content;
   display: flex;
   justify-content: center;
-  margin: 0 2rem;
+
   gap: 10px;
   z-index: 10;
   grid-area: bullets;
@@ -349,7 +349,7 @@ p::selection, span::selection, a::selection{
 }
 
 .buttons label {
-  width: 20px;
+  width: 28px;
   height: 2px;
   background-color: var(--primary);
   opacity: 0.5;
@@ -410,7 +410,7 @@ p::selection, span::selection, a::selection{
   display: grid;
 
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, auto));
+  grid-template-rows: minmax(0, 1fr) ;
 
   grid-template-areas:
     "Stitle a"
@@ -423,9 +423,9 @@ p::selection, span::selection, a::selection{
 .STitle{
   grid-area: Stitle;
   grid-column: span 2;
-  color: var(--primary-foreground);
+  color: var(--theme-light-bg);
   h1{
-    font-size: var(--text-5xl);
+    font-size: var(--text-7xl);
   }
   
 }
@@ -468,7 +468,7 @@ p::selection, span::selection, a::selection{
 
 
 .discover-button.secondary {
-  font-family: var(--font-body);
+  font-family: var(--White);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.263);
   display: flex;
   align-items: center;
@@ -508,7 +508,7 @@ p::selection, span::selection, a::selection{
   font-family: var(--font-body);
   max-width: 25rem;
   color: rgba(255, 255, 255, 0.7);
-  font-size: var(--text-sm);
+  font-size: var(--text-lg);
   line-height: 1.625;
   text-align: right;
   justify-self: flex-start;
@@ -520,7 +520,8 @@ p::selection, span::selection, a::selection{
 @media (min-width: 768px) {
   .description-text {
     display: block;
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
+    align-self:flex-start;
   }
 }
 
@@ -546,7 +547,7 @@ p::selection, span::selection, a::selection{
 }
 
 .uno__slide .main__hero__element {
-  background-image: url(../images/2-1920x1080.webp);
+  background-image: url(../images/1-1920x1080.webp);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -554,7 +555,7 @@ p::selection, span::selection, a::selection{
 }
 
 .dos__slide .main__hero__element {
-  background-image: url(../images/1-1920x1080.webp);
+  background-image: url(../images/2-1920x1080.webp);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -592,6 +593,87 @@ p::selection, span::selection, a::selection{
   width: 100%;
   height: 100%;
 }
+
+
+.main__hero__element.right-img{
+  background-position: right;
+}
+
+.main__hero__element.left-img{
+  background-position: left;
+}
+
+
+
+@media (max-width: 1010px) {
+
+.main__hero__element.right-img, .main__hero__element.left-img{
+  background-position: center;
+}
+
+
+
+
+
+ .uno__slide .main__hero__element {
+  background-image: url(../images/1-1010x2010.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.dos__slide .main__hero__element {
+  background-image: url(../images/2-1010x2010.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tres__slide .main__hero__element {
+  background-image: url(../images/3-1010x2010.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cuatro__slide .main__hero__element {
+  background-image: url(../images/4-1010x2010.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.sinco__slide .main__hero__element {
+  background-image: url(../images/desktop-image-hero-5.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.seis__slide .main__hero__element {
+  background-image: url(../images/desktop-image-hero-6.webp);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 .slider input:nth-child(1):checked ~ .content {
@@ -673,20 +755,24 @@ p::selection, span::selection, a::selection{
 
 /* Controls del carrusel (estilo similar a .app-btn del footer) */
 .main__controls {
+  margin-top: 1.5rem;
+  position: absolute;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   align-self: flex-start;
   justify-self: flex-end;
+  grid-row: span 2;
   grid-area: arrows;
 }
 
 .main__controls .slider-control-prev,
 .main__controls .slider-control-next {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 9999px;
+
+  border-radius: 0.5rem;
   background: transparent;
   padding: 0;
   cursor: pointer;
@@ -698,6 +784,7 @@ p::selection, span::selection, a::selection{
     border-color 0.3s ease,
     color 0.3s ease,
     background-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .main__controls .slider-control-prev:hover,
@@ -710,7 +797,7 @@ p::selection, span::selection, a::selection{
 .main__controls .slider-control-prev:focus,
 .main__controls .slider-control-next:focus {
   outline: 2px solid rgba(255, 255, 255, 0.6);
-  outline-offset: 2px;
+  outline-offset: 0px;
 }
 
 .main__controls .slider-control-icon {
@@ -1883,7 +1970,7 @@ p::selection, span::selection, a::selection{
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 1.5rem;
   z-index: 10;
@@ -1971,6 +2058,12 @@ p::selection, span::selection, a::selection{
   border-color: rgba(0, 0, 0, 0.3);
   color: rgba(0, 0, 0, 0.7);
 }
+
+
+.STitle > p {
+  font-size: var(--text-2xl);
+}
+
 
 .social-sidebar.light-theme .social-button:hover {
   border-color: #2563eb;
@@ -2102,8 +2195,8 @@ p::selection, span::selection, a::selection{
   gap: 0.5rem; /* equivalente a gap-8 */
   z-index: 5;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, minmax(0, min-content));
   grid-template-areas:
     "texto"
     "cotizar descripcion"
@@ -2116,7 +2209,7 @@ p::selection, span::selection, a::selection{
 
 
 .main{
-  margin-top: 100px;
+  margin-top: 56px;
 }
 
 
@@ -2160,8 +2253,13 @@ p::selection, span::selection, a::selection{
   font-size: var(--text-sm);
   line-height: 1.625;
   text-align: right;
-  justify-self: flex-end;
+  justify-self: flex-start;
   visibility: visible;
+}
+
+
+.STitle > p {
+  font-size: var(--text-2xl);
 }
 
 
@@ -2181,7 +2279,7 @@ p::selection, span::selection, a::selection{
     background-color: var(--primary-foreground, #ffffff);
     color: var(--foreground, #000000);
     border: none;
-    border-radius: 9999px;
+    border-radius: 0.5rem !important;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -2247,6 +2345,12 @@ p::selection, span::selection, a::selection{
     font-size: var(--text-5xl);
   }
 
+  .main__controls .slider-control-prev,
+  .main__controls .slider-control-next {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .exterior__container {
     padding: var(--section-padding-y) 0;
     gap: 1rem;
@@ -2297,6 +2401,9 @@ p::selection, span::selection, a::selection{
     padding: var(--section-padding-y) 0;
     gap: 0.5rem;
   }
+
+
+
 }
 
 /* 5. MEDIA QUERIES (MÓVIL: 640px) */
@@ -2443,14 +2550,6 @@ p::selection, span::selection, a::selection{
 }
 
 
-
-
-
-
-
-
-
-
 .main__stats {
       padding: var(--section-padding-y) 0;
       background-color: var(--bg-primary);
@@ -2529,7 +2628,7 @@ p::selection, span::selection, a::selection{
     }
 
     .stat-label {
-      color: var(--text-main);
+      color: var(--text-soft);
       font-size: var(--stat-label-size);
       letter-spacing: var(--stat-label-tracking);
       text-transform: uppercase;
@@ -2618,7 +2717,7 @@ p::selection, span::selection, a::selection{
 .glow-background {
   position: absolute;
   inset: 0;
-  background-color: rgb(139, 26, 26);
+  
   filter: blur(3rem);
   opacity: 0.2;
   border-radius: 1.5rem;
@@ -2633,15 +2732,15 @@ p::selection, span::selection, a::selection{
   margin: 0 auto;
   display: block;
   border-radius: 1.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   filter: none;
   transition: filter 0.45s ease, background-image 0.35s ease;
 }
+/*
 
-/* Imagen y resplandor según radio :checked (orden: negro, azul, verde, plata, blanco, gris, rojo) */
 .color-customization-section > input:nth-child(1):checked ~ .ccc-wrapper .glow-background {
   background-color: rgb(26, 26, 26);
 }
@@ -2668,41 +2767,41 @@ p::selection, span::selection, a::selection{
 
 .color-customization-section > input:nth-child(7):checked ~ .ccc-wrapper .glow-background {
   background-color: rgb(139, 26, 26);
-}
+}*/
 
 .color-customization-section > input:nth-child(1):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/1.jpg);
+  background-image: url(../images/1080x1920_negro.png);
   filter: none;
 }
 
 .color-customization-section > input:nth-child(2):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/2.jpg);
+  background-image: url(../images/1080x1920_gris.png);
   /*filter: hue-rotate(195deg) saturate(1.35);*/
 
 }
 
 .color-customization-section > input:nth-child(3):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/4.jpg);
+  background-image: url(../images/1080x1920_plata-negro.png);
   /*filter: hue-rotate(95deg) saturate(1.15);*/
 }
 
 .color-customization-section > input:nth-child(4):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/6.jpg);
+  background-image: url(../images/1080x1920_plata.png);
   filter: brightness(1.12);
 }
 
 .color-customization-section > input:nth-child(5):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/7.jpg);
+  background-image: url(../images/1080x1920_blanco-negro.png);
   filter: none;
 }
 
 .color-customization-section > input:nth-child(6):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/5.jpg);
+  background-image: url(../images/1080x1920_blanco.png);
   filter: none;
 }
 
 .color-customization-section > input:nth-child(7):checked ~ .ccc-wrapper .main-image {
-  background-image: url(../images/naranja.png);
+  background-image: url(../images/1080x1920_rojo.png);
   filter: none;
 }
 
@@ -2714,10 +2813,10 @@ p::selection, span::selection, a::selection{
 
 .color-customization-section > input:nth-child(1):checked ~ .ccc-wrapper .ccc-name--negro,
 .color-customization-section > input:nth-child(1):checked ~ .ccc-wrapper .ccc-desc--negro,
-.color-customization-section > input:nth-child(2):checked ~ .ccc-wrapper .ccc-name--azul,
-.color-customization-section > input:nth-child(2):checked ~ .ccc-wrapper .ccc-desc--azul,
-.color-customization-section > input:nth-child(3):checked ~ .ccc-wrapper .ccc-name--verde,
-.color-customization-section > input:nth-child(3):checked ~ .ccc-wrapper .ccc-desc--verde,
+.color-customization-section > input:nth-child(2):checked ~ .ccc-wrapper .ccc-name--gris,
+.color-customization-section > input:nth-child(2):checked ~ .ccc-wrapper .ccc-desc--gris,
+.color-customization-section > input:nth-child(3):checked ~ .ccc-wrapper .ccc-name--plata-negro,
+.color-customization-section > input:nth-child(3):checked ~ .ccc-wrapper .ccc-desc--plata-negro,
 .color-customization-section > input:nth-child(4):checked ~ .ccc-wrapper .ccc-name--plata,
 .color-customization-section > input:nth-child(4):checked ~ .ccc-wrapper .ccc-desc--plata,
 .color-customization-section > input:nth-child(5):checked ~ .ccc-wrapper .ccc-name--blanco,
@@ -3269,8 +3368,8 @@ p::selection, span::selection, a::selection{
     .safety-section .header-icon {
       width: 48px;
       height: 48px;
-      background-color: rgba(255, 165, 0, 0.1);
-      border: 1px solid rgba(255, 165, 0, 0.3);
+      background-color: var(--theme-dark-icon-bg);
+      border: 1px solid var(--theme-dark-icon-border);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -3279,7 +3378,7 @@ p::selection, span::selection, a::selection{
     }
 
     .safety-section .header-icon .lucide {
-      stroke: #ffa500;
+      stroke: var(--accent-cyan);
     }
 
     .safety-section .title {
@@ -3345,7 +3444,7 @@ p::selection, span::selection, a::selection{
     }
 
     .feature-item.active .feature-number {
-      color: #ffa500;
+      color: var(--accent-cyan);
     }
 
     .feature-item .feature-name {
@@ -3358,7 +3457,7 @@ p::selection, span::selection, a::selection{
       opacity: 0;
       transform: translateX(-10px);
       transition: all 0.3s ease;
-      color: #ffa500;
+      color: var(--accent-cyan);
     }
 
     .feature-item.active .feature-arrow {
@@ -3399,7 +3498,7 @@ p::selection, span::selection, a::selection{
       top: 0;
       left: 0;
       height: 100%;
-      background: #ffa500;
+      background: var(--accent-cyan);
       width: 25%;
       transition: width 0.4s ease;
     }
@@ -3438,6 +3537,7 @@ p::selection, span::selection, a::selection{
     .safety-visual {
       width: 100%;
       position: relative;
+      align-self: center;
     }
 
     /* Botones de navegación sobre la imagen (Solo móvil) */
@@ -3546,6 +3646,7 @@ p::selection, span::selection, a::selection{
       -ms-overflow-style: none;
       position: relative;
       z-index: 10;
+      justify-content: space-around;
     }
 
     .safety-section .thumbnails-container::-webkit-scrollbar {
@@ -3568,7 +3669,7 @@ p::selection, span::selection, a::selection{
 
     @media (min-width: 768px) {
       .safety-section .thumbnail {
-        flex: 0 0 120px;
+        flex: 0 0 138px;
       }
     }
 
@@ -3581,7 +3682,7 @@ p::selection, span::selection, a::selection{
     }
 
     .safety-section .thumbnail.thumbnail-active {
-      border-color: #ffa500;
+      border-color: var(--accent-cyan);
       opacity: 1;
       transform: scale(1.05);
       z-index: 2;
@@ -3629,3 +3730,4 @@ p::selection, span::selection, a::selection{
 
     body.dark-mode .theme-toggle-btn .sun-icon { display: block; }
     body.dark-mode .theme-toggle-btn .moon-icon { display: none; }
+
