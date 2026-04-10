@@ -474,15 +474,15 @@ p::selection, span::selection, a::selection{
 .discover-button.secondary {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.263);
   background-color:  #00000000;
-  color: var(--bg-primary);
-  border: solid 1px var(--bg-primary);
+  color: white;
+  border: solid 1px white;
 }
 
 .discover-button.secondary:hover {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.263);
-  background-color:  var(--bg-primary);
+  background-color:  white;
   color: #000;
-  border: solid 1px var(--bg-primary);
+  border: solid 1px white;
 }
 
 .discover-button:hover {
