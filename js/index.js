@@ -183,23 +183,28 @@ function initSafetySlider() {
       alt: 'Alerta de colisión frontal y trasera',
     },
     {
-      src: './images/2adas.jpg',
+      src: './images/8adas.jpg',
+      title: 'Control de Crucero Adaptativo.',
+      description: 'Ajusta automáticamente la velocidad según el tráfico.​',
+    },
+     {
+      src: './images/5adas.jpg',
       title: 'Detector de punto ciego',
-      description: 'Para mayor control en maniobras de cambio de carril.',
-      alt: 'Detector de punto ciego',
+      description: 'Para mayor control en maniobras de cambio de carril.​',
     },
     {
-      src: './images/3adas.jpg',
+      src: './images/2adas.jpg',
       title: 'Sistema de mantenimiento de carril',
       description: 'Ayuda a mantener el vehículo centrado en el carril.',
       alt: 'Sistema de mantenimiento de carril',
     },
     {
-      src: './images/4adas.jpg',
+      src: './images/7adas.jpg',
       title: 'Sistema de monitoreo de fatiga',
       description: 'Detecta signos de cansancio y te sugiere hacer una pausa.',
       alt: 'Sistema de monitoreo de fatiga',
     },
+
   ];
 
   var mainImg = section.querySelector('.safety-slider__main-img');
