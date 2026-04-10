@@ -426,6 +426,10 @@ p::selection, span::selection, a::selection{
   color: var(--theme-light-bg);
   h1{
     font-size: var(--text-7xl);
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    text-size-adjust: initial;
+  display: inline;
   }
   
 }
@@ -468,19 +472,18 @@ p::selection, span::selection, a::selection{
 
 
 .discover-button.secondary {
-  font-family: var(--White);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.263);
-  display: flex;
-  align-items: center;
-  gap: 0rem;
-  padding: 1rem 2rem;
   background-color:  #00000000;
-  color: var(--primary-foreground, #000000);
-  border: solid 1px var(--primary-foreground);
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: var(--bg-primary);
+  border: solid 1px var(--bg-primary);
 }
 
+.discover-button.secondary:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.263);
+  background-color:  var(--bg-primary);
+  color: #000;
+  border: solid 1px var(--bg-primary);
+}
 
 .discover-button:hover {
   background-color: var(--foreground);
@@ -1052,6 +1055,7 @@ p::selection, span::selection, a::selection{
 
 .color-description {
   font-family: var(--font-body);
+  display: none;
 }
 
 .main__color__picker input {
@@ -2184,6 +2188,49 @@ p::selection, span::selection, a::selection{
 @media only screen and (max-width: 900px) {
 
 
+.color-customization-section .color-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0rem !important; 
+  flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+
+.color-label{
+  display: none;
+}
+
+.main-image {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  aspect-ratio: 1920 / 1080 !important;
+  margin: 0 auto;
+  display: block;
+  border-radius: 1.5rem;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: none;
+  transition: filter 0.45s ease, background-image 0.35s ease;
+}
+
+
+
+
+
+
+
+
+
 .call-to-action-container {
   position: absolute;
   bottom: 4.25rem; /* equivalente a bottom-12 */
@@ -2714,6 +2761,10 @@ p::selection, span::selection, a::selection{
   margin-bottom: 3rem;
 }
 
+.image-wrapper.color{
+  margin-bottom: 0.5rem;
+}
+
 .glow-background {
   position: absolute;
   inset: 0;
@@ -2728,7 +2779,7 @@ p::selection, span::selection, a::selection{
   position: relative;
   z-index: 10;
   width: 100%;
-  aspect-ratio: 1920 / 1080;
+  aspect-ratio: 1920 / 900;
   margin: 0 auto;
   display: block;
   border-radius: 1.5rem;
@@ -2872,7 +2923,7 @@ p::selection, span::selection, a::selection{
   border-radius: 1rem;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3),
               0 4px 6px -4px rgb(0 0 0 / 0.3);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid #4b5563;
   transition: all 0.3s ease;
 }
 
@@ -3087,7 +3138,7 @@ p::selection, span::selection, a::selection{
 
 .seguridad-section {
       position: relative;
-      background-color: var(--bg-secondary);
+      background-color: var(--bg-primary);
       padding: var(--section-padding-y) 0;
       overflow: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
@@ -3334,7 +3385,7 @@ p::selection, span::selection, a::selection{
 
 
     .safety-section {
-      background-color: var(--bg-primary);
+      background-color: var(--bg-secondary);
       padding: var(--section-padding-y) 0;
       color: var(--text-main);
       transition: background-color 0.3s ease, color 0.3s ease;

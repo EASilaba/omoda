@@ -144,7 +144,7 @@
                         <a href="https://cotizar.karry.com.pa/"
                             style="text-decoration: none; width: fit-content" target="_blank"><button
                                 class="discover-button secondary">
-                                <span class="button-text">Cotizar Ahora</span>
+                                <span class="button-text">Ficha técnica</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="button-icon">
@@ -285,7 +285,107 @@
     </div>
   </section>
 
+ <section class="color-customization-section">
+  <input type="radio" name="custom-color" id="ccc-negro"  checked=""/>
+  <input type="radio" name="custom-color" id="ccc-gris" />
+  <input type="radio" name="custom-color" id="ccc-plata-negro" />
+  <input type="radio" name="custom-color" id="ccc-plata"/>
+  <input type="radio" name="custom-color" id="ccc-blanco-negro" />
+  <input type="radio" name="custom-color" id="ccc-blanco" />
+  <input type="radio" name="custom-color" id="ccc-rojo" />
 
+  <div class="ccc-wrapper">
+  <div class="container">
+    
+    <!-- Encabezado -->
+    <div class="section-block text-center">
+      <span class="section-kicker hidden">Personalización</span>
+      <h2 class="section-heading">
+        El color que va <span class="highlight">contigo</span>
+      </h2>
+      <p class="section-lede">
+        Cada tono está pensado para destacar y expresar tu estilo desde el primer vistazo.
+      </p>
+    </div>
+
+    <!-- Imagen con efecto -->
+    <div class="image-wrapper color">
+      <div class="glow-background"></div>
+      <div
+        class="main-image"
+        role="img"
+        aria-label="Vista del vehículo según color seleccionado"
+        loading="lazy"
+        ></div>
+    </div>
+
+    <!-- Título del color actual -->
+    <div class="color-title text-center mb-10">
+      <h3 class="color-name">
+        <span class="ccc-name ccc-name--negro">Negro absoluto</span>
+        <span class="ccc-name ccc-name--gris">Gris</span>
+        <span class="ccc-name ccc-name--plata-negro">Plata Negro</span>
+        <span class="ccc-name ccc-name--plata">Plata</span>
+        <span class="ccc-name ccc-name--blanco-negro">Blanco/Negro</span>
+        <span class="ccc-name ccc-name--blanco">Blanco</span>
+        <span class="ccc-name ccc-name--rojo">Rojo</span>
+      </h3>
+      <p class="color-description ccc-desc-wrap">
+        <span class="ccc-desc ccc-desc--negro">Elegancia que no pasa desapercibida</span>
+        <span class="ccc-desc ccc-desc--gris">Serenidad con carácter</span>
+        <span class="ccc-desc ccc-desc--plata-negro">Natural y distinguido</span>
+        <span class="ccc-desc ccc-desc--plata">Brillo sutil y versátil</span>
+        <span class="ccc-desc ccc-desc--blanco">Limpio y atemporal</span>
+        <span class="ccc-desc ccc-desc--gris">Equilibrio urbano</span>
+        <span class="ccc-desc ccc-desc--rojo">Pasión que acelera el pulso</span>
+      </p>
+    </div>
+
+    <!-- Selector de colores -->
+    <div class="color-selector">
+      <label for="ccc-negro" class="color-option">
+        <div class="color-swatch" style="background-color: rgb(26, 26, 26);"></div>
+        <span class="color-label">Negro</span>
+      </label>
+
+      <label for="ccc-gris" class="color-option">
+        <div class="color-swatch" style="background-color: rgb(61, 61, 61);"></div>
+        <span class="color-label">Gris</span>
+      </label>
+
+      <label for="ccc-plata-negro" class="color-option">
+        <div class="color-swatch" style="background: linear-gradient(360deg,rgb(141, 141, 141) 50%, rgba(0, 0, 0, 1) 50%); background-size: 150%;"></div>
+        <span class="color-label">Plata/Negro</span>
+      </label>
+
+      <label for="ccc-plata" class="color-option">
+        <div class="color-swatch" style="background-color: rgb(192, 192, 192);"></div>
+        <span class="color-label">Plata</span>
+      </label>
+
+      <label for="ccc-blanco-negro" class="color-option">
+        <div class="color-swatch" style="background: linear-gradient(360deg,rgba(255, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 50%);"></div>
+        <span class="color-label">Blanco/Negro</span>
+      </label>
+
+      <label for="ccc-blanco" class="color-option">
+        <div class="color-swatch" style="background-color: rgb(255, 255, 255);"></div>
+        <span class="color-label">Blanco</span>
+      </label>
+
+      <label for="ccc-rojo" class="color-option">
+        <div class="color-swatch" style="background-color: rgb(139, 26, 26);"></div>
+        <span class="color-label">Rojo</span>
+      </label>
+    </div>
+
+    <p class="disclaimer">
+      *Disponibilidad sujeta a versión y stock.
+    </p>
+
+  </div>
+  </div>
+</section>
 
 
 <section class="seguridad-section">
@@ -455,107 +555,7 @@ El OMODA C5 NG incorpora anclajes ISOFIX para sillas de bebé y una alarma antir
   </div>
 </section>
 
-  <section class="color-customization-section">
-  <input type="radio" name="custom-color" id="ccc-negro"  checked=""/>
-  <input type="radio" name="custom-color" id="ccc-gris" />
-  <input type="radio" name="custom-color" id="ccc-plata-negro" />
-  <input type="radio" name="custom-color" id="ccc-plata"/>
-  <input type="radio" name="custom-color" id="ccc-blanco-negro" />
-  <input type="radio" name="custom-color" id="ccc-blanco" />
-  <input type="radio" name="custom-color" id="ccc-rojo" />
-
-  <div class="ccc-wrapper">
-  <div class="container">
-    
-    <!-- Encabezado -->
-    <div class="section-block text-center mb-16">
-      <span class="section-kicker">Personalización</span>
-      <h2 class="section-heading">
-        El color que va <span class="highlight">contigo</span>
-      </h2>
-      <p class="section-lede">
-        Cada tono está pensado para destacar y expresar tu estilo desde el primer vistazo.
-      </p>
-    </div>
-
-    <!-- Imagen con efecto -->
-    <div class="image-wrapper">
-      <div class="glow-background"></div>
-      <div
-        class="main-image"
-        role="img"
-        aria-label="Vista del vehículo según color seleccionado"
-        loading="lazy"
-        ></div>
-    </div>
-
-    <!-- Título del color actual -->
-    <div class="color-title text-center mb-10">
-      <h3 class="color-name">
-        <span class="ccc-name ccc-name--negro">Negro absoluto</span>
-        <span class="ccc-name ccc-name--gris">Gris</span>
-        <span class="ccc-name ccc-name--plata-negro">Plata Negro</span>
-        <span class="ccc-name ccc-name--plata">Plata</span>
-        <span class="ccc-name ccc-name--blanco-negro">Blanco/Negro</span>
-        <span class="ccc-name ccc-name--blanco">Blanco</span>
-        <span class="ccc-name ccc-name--rojo">Rojo</span>
-      </h3>
-      <p class="color-description ccc-desc-wrap">
-        <span class="ccc-desc ccc-desc--negro">Elegancia que no pasa desapercibida</span>
-        <span class="ccc-desc ccc-desc--gris">Serenidad con carácter</span>
-        <span class="ccc-desc ccc-desc--plata-negro">Natural y distinguido</span>
-        <span class="ccc-desc ccc-desc--plata">Brillo sutil y versátil</span>
-        <span class="ccc-desc ccc-desc--blanco">Limpio y atemporal</span>
-        <span class="ccc-desc ccc-desc--gris">Equilibrio urbano</span>
-        <span class="ccc-desc ccc-desc--rojo">Pasión que acelera el pulso</span>
-      </p>
-    </div>
-
-    <!-- Selector de colores -->
-    <div class="color-selector">
-      <label for="ccc-negro" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(26, 26, 26);"></div>
-        <span class="color-label">Negro</span>
-      </label>
-
-      <label for="ccc-gris" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(61, 61, 61);"></div>
-        <span class="color-label">Gris</span>
-      </label>
-
-      <label for="ccc-plata-negro" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(58, 90, 74);"></div>
-        <span class="color-label">Plata/Negro</span>
-      </label>
-
-      <label for="ccc-plata" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(192, 192, 192);"></div>
-        <span class="color-label">Plata</span>
-      </label>
-
-      <label for="ccc-blanco-negro" class="color-option">
-        <div class="color-swatch" style="background: linear-gradient(360deg,rgba(255, 255, 255, 1) 50%, rgba(0, 0, 0, 1) 50%);"></div>
-        <span class="color-label">Blanco/Negro</span>
-      </label>
-
-      <label for="ccc-blanco" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(255, 255, 255);"></div>
-        <span class="color-label">Blanco</span>
-      </label>
-
-      <label for="ccc-rojo" class="color-option">
-        <div class="color-swatch" style="background-color: rgb(139, 26, 26);"></div>
-        <span class="color-label">Rojo</span>
-      </label>
-    </div>
-
-    <p class="disclaimer">
-      *Disponibilidad sujeta a versión y stock.
-    </p>
-
-  </div>
-  </div>
-</section>
+ 
 
      
 
